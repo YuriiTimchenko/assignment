@@ -32,7 +32,11 @@ In this particular case, allowing a task to be created with an empty title could
 
 ## Task C — API validation
 
-- **What the new API test verifies:**
+- **What the new API test verifies:** The new API test verifies that a task can be successfully created using a POST request to the /tasks endpoint. It validates the response status code, response payload structure and key task attributes.
+
+Additionally, the test retrieves the newly created task using a GET request with its ID and re-validates the key attributes to confirm that the data was persisted correctly.
+
+Finally, the test deletes the created task to clean up the test data and prevent it from affecting subsequent tests.
 
 ## Task D — Bug / usability / improvement report
 
