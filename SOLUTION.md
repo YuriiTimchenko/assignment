@@ -62,28 +62,28 @@ Allow status changes only through the Edit Task dialog and display the status as
 The final approach should be consistent with the application's overall UX and interaction patterns.
 
 **Issue #4**
-**What I observed:** Task status can be changed in any direction without any apparent transition rules.
-**Steps to reproduce (if applicable):** Navigate to the main Tasks grid page and change the status of a task through different statuses in various combinations. Actual result: A task's status can be changed to any available status without any apparent restrictions or validation.
-**Why it matters:** If the business workflow or status history is important for the application, unrestricted status transitions may allow invalid business states. For example, the system might need to prevent a task from being moved directly from Open to Done without first going through In Progress.
-**Suggested fix or improvement:** Additional requirements should be clarified with the BA, PM, or Design team to determine the expected status transition workflow and identify which status changes should be allowed or restricted.
+- **What I observed:** Task status can be changed in any direction without any apparent transition rules.
+- **Steps to reproduce (if applicable):** Navigate to the main Tasks grid page and change the status of a task through different statuses in various combinations. Actual result: A task's status can be changed to any available status without any apparent restrictions or validation.
+- **Why it matters:** If the business workflow or status history is important for the application, unrestricted status transitions may allow invalid business states. For example, the system might need to prevent a task from being moved directly from Open to Done without first going through In Progress.
+- **Suggested fix or improvement:** Additional requirements should be clarified with the BA, PM, or Design team to determine the expected status transition workflow and identify which status changes should be allowed or restricted.
 
 **Issue #5**
-**What I observed:** No character limits are enforced for the text fields in the Create/Edit Task modal.
-**Steps to reproduce (if applicable):** Navigate to the main Tasks grid page. Click the New Task button or edit an existing task. Enter a large number of characters into the Title or Description fields. Actual result: No apparent character limits or validation are applied to the text fields. If a very long string without spaces is entered, it can break the layout of the Tasks grid.
-**Why it matters:** The application should properly handle negative and boundary cases and prevent excessively long input from negatively affecting the user interface or application behavior.
-**Suggested fix or improvement:** Add appropriate character limits and input validation to the Title and Description fields. Consider displaying a validation message when the maximum length is exceeded and ensuring that long text cannot break the layout.
+- **What I observed:** No character limits are enforced for the text fields in the Create/Edit Task modal.
+- **Steps to reproduce (if applicable):** Navigate to the main Tasks grid page. Click the New Task button or edit an existing task. Enter a large number of characters into the Title or Description fields. Actual result: No apparent character limits or validation are applied to the text fields. If a very long string without spaces is entered, it can break the layout of the Tasks grid.
+- **Why it matters:** The application should properly handle negative and boundary cases and prevent excessively long input from negatively affecting the user interface or application behavior.
+- **Suggested fix or improvement:** Add appropriate character limits and input validation to the Title and Description fields. Consider displaying a validation message when the maximum length is exceeded and ensuring that long text cannot break the layout.
 
 **Issue #6**
-**What I observed:** Duplicate task names are allowed.
-**Steps to reproduce (if applicable):** Navigate to the main Tasks grid page and create two different tasks with the same name. Actual result: Multiple tasks with identical names can be created.
-**Why it matters:** Duplicate task names can create ambiguity for users and may lead to conflicts when identifying or managing specific tasks. There is also a potential impact on the automation framework, which currently locates tasks by their name. If task names are not unique, locators may match multiple tasks and cause test instability or unexpected behavior.
-**Suggested fix or improvement:** Consider restricting the creation of tasks with duplicate names if task names are intended to be unique. Alternatively, introduce another unique attribute, such as a task ID and use it for task identification. If duplicate names are allowed by design, the automation framework should use a unique identifier rather than the task name when locating individual tasks.
+- **What I observed:** Duplicate task names are allowed.
+- **Steps to reproduce (if applicable):** Navigate to the main Tasks grid page and create two different tasks with the same name. Actual result: Multiple tasks with identical names can be created.
+- **Why it matters:** Duplicate task names can create ambiguity for users and may lead to conflicts when identifying or managing specific tasks. There is also a potential impact on the automation framework, which currently locates tasks by their name. If task names are not unique, locators may match multiple tasks and cause test instability or unexpected behavior.
+- **Suggested fix or improvement:** Consider restricting the creation of tasks with duplicate names if task names are intended to be unique. Alternatively, introduce another unique attribute, such as a task ID and use it for task identification. If duplicate names are allowed by design, the automation framework should use a unique identifier rather than the task name when locating individual tasks.
 
 **Issue #7**
-**What I observed:** Missing confirmation and informational feedback for Create, Edit, and Delete task actions.
-**Steps to reproduce (if applicable):** Navigate to the main Tasks grid page and create, edit or delete any task. Actual result: No informational banner or confirmation message is displayed after completing these actions and deleting a task does not require additional confirmation.
-**Why it matters:** Clear UI feedback is important to confirm that an action has been completed successfully. Additionally, deleting a task is potentially destructive and users should have an opportunity to confirm the action before the task is permanently removed.
-**Suggested fix or improvement:** Implement success/information banners for completed Create, Edit, and Delete actions. Add a confirmation dialog before deleting a task to help prevent accidental deletion.
+- **What I observed:** Missing confirmation and informational feedback for Create, Edit, and Delete task actions.
+- **Steps to reproduce (if applicable):** Navigate to the main Tasks grid page and create, edit or delete any task. Actual result: No informational banner or confirmation message is displayed after completing these actions and deleting a task does not require additional confirmation.
+- **Why it matters:** Clear UI feedback is important to confirm that an action has been completed successfully. Additionally, deleting a task is potentially destructive and users should have an opportunity to confirm the action before the task is permanently removed.
+- **Suggested fix or improvement:** Implement success/information banners for completed Create, Edit, and Delete actions. Add a confirmation dialog before deleting a task to help prevent accidental deletion.
 
 ## Anything else you'd like us to know
 - I identified several additional areas that could be improved or further explored. However, I prioritized the mandatory requirements and higher-impact findings to ensure the most important areas were covered thoroughly within the available time.
