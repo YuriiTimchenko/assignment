@@ -19,6 +19,17 @@ test.describe('Task management', () => {
     await expect(taskManager.taskStatusBadge('Prepare demo')).toHaveText('Open');
   });
 
+    test('Verify task can not be created with empty title', async ({ page }) => {
+    const taskManager = new TaskManagerPage(page);
+    await taskManager.goto();
+
+    await taskManager.openNewTaskForm();
+    await taskManager.fillTaskForm({ title: '', description: 'This task has no title', status: 'Open' });
+    await taskManager.submitForm();
+
+    await expect(taskManager.getTitleError).toHaveText('Title is required');
+  });
+
   test('edits an existing task', async ({ page }) => {
     const taskManager = new TaskManagerPage(page);
     await taskManager.goto();
