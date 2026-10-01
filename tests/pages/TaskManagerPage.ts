@@ -18,12 +18,20 @@ export class TaskManagerPage {
   private readonly newTaskButton: Locator;
   private readonly searchInput: Locator;
   private readonly formModal: Locator;
+  // ideally formModal itself and its objects would be a separate Page Object, but for simplicity we'll keep it here
+  private readonly titleError: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.newTaskButton = page.getByTestId('new-task-btn');
     this.searchInput = page.getByTestId('search-input');
     this.formModal = page.getByTestId('task-form-modal');
+    this.titleError = page.getByTestId('title-error');
+  }
+
+  /** Validation message shown under the title field in the task form. */
+  get getTitleError(): Locator {
+    return this.titleError;
   }
 
   async goto() {
