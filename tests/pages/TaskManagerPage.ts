@@ -14,10 +14,10 @@ export interface TaskFormData {
  * and resilient to small markup changes.
  */
 export class TaskManagerPage {
-  readonly page: Page;
-  readonly newTaskButton: Locator;
-  readonly searchInput: Locator;
-  readonly formModal: Locator;
+  private readonly page: Page;
+  private readonly newTaskButton: Locator;
+  private readonly searchInput: Locator;
+  private readonly formModal: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -86,6 +86,6 @@ export class TaskManagerPage {
   }
 
   async search(term: string) {
-    await this.page.getByTestId('task-search-input').fill(term);
+    await this.searchInput.fill(term);
   }
 }

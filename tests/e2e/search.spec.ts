@@ -16,10 +16,10 @@ test.describe('Search', () => {
     const taskManager = new TaskManagerPage(page);
     await taskManager.goto();
 
-    await taskManager.searchInput.fill('Write report');
+    await taskManager.search('Write report');
     await expect(taskManager.taskRow('Buy groceries')).toHaveCount(0);
 
-    await taskManager.searchInput.fill('');
+    await taskManager.search('');
     await expect(taskManager.taskRow('Buy groceries')).toBeVisible();
   });
 });
